@@ -1,6 +1,8 @@
 using CatsStealer.WebApi.Extension;
 using Microsoft.EntityFrameworkCore;
 using CatStealer.Infrastructure.Data;
+using CatStealer.Core.Interfaces.Repositories;
+using CatStealer.Infrastructure.Repositories;
 
 namespace CatsStealer.WebApi
 {
@@ -17,6 +19,7 @@ namespace CatsStealer.WebApi
                 options.UseSqlServer(builder.Configuration["ConnectionString"], b => b.MigrationsAssembly("CatStealer.Infrastructure"));
             });
 
+            builder.Services.AddScoped<ICatRepository, CatRepository>();
             // Add services to the container.
             builder.Services.AddControllers();
 
