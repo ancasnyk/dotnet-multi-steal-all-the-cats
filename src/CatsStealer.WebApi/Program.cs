@@ -50,6 +50,8 @@ namespace CatsStealer.WebApi
 
             var app = builder.Build();
 
+            SetupDb(app);
+
             // Configure the HTTP request pipeline.
             app.UseSwagger();
             app.UseSwaggerUI();
@@ -61,6 +63,23 @@ namespace CatsStealer.WebApi
             app.MapControllers();
 
             app.Run();
+        }
+
+        private static void SetupDb(IHost app)
+        {
+            using var scope = app.Services.CreateScope();
+            var services = scope.ServiceProvider;
+            
+            try
+            {
+                var context = services.GetRequiredService<ApplicationDbContext>();
+                context.Database.Migrate();
+            }
+            catch (Exception ex)
+            {
+                var logger = services.GetRequiredService<ILogger<Program>>();
+                logger.LogError(ex, "An error occurred while migrating or initializing the database.");
+            }
         }
     }
 }
