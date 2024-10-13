@@ -1,6 +1,6 @@
 # About CatsStealer
 
-![Build](https://github.com/amoraitis/steal-all-the-cats/blob/main/.github/workflows/dotnet.yml/badge.svg)
+![Build](https://github.com/amoraitis/steal-all-the-cats/blob/.github/workflows/dotnet.yml/badge.svg)
 
 This project's goal is to allow stealing cats data from the [Cats API](https://thecatapi.com/).
 
