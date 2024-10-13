@@ -56,7 +56,10 @@ namespace CatsStealer.WebApi
             app.UseSwagger();
             app.UseSwaggerUI();
 
-            app.UseHttpsRedirection();
+            if (app.Environment.IsDevelopment() == false)
+            {
+                app.UseHttpsRedirection();
+            }
 
             app.UseAuthorization();
 
