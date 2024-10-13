@@ -3,21 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatsStealer.WebApi", "src\CatsStealer.WebApi\CatsStealer.WebApi.csproj", "{4E8394AF-1BEE-4DD9-A440-01576F294564}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatsStealer.WebApi", "src\CatsStealer.WebApi\CatsStealer.WebApi.csproj", "{4E8394AF-1BEE-4DD9-A440-01576F294564}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatStealer.Core", "src\CatStealer.Core\CatStealer.Core.csproj", "{F94B8157-70DD-4BF7-844A-1A1F12FE00B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatStealer.Core", "src\CatStealer.Core\CatStealer.Core.csproj", "{F94B8157-70DD-4BF7-844A-1A1F12FE00B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatStealer.Infrastructure", "src\CatStealer.Infrastructure\CatStealer.Infrastructure.csproj", "{35F8131A-3E9B-45EA-B8C2-BE067FABED1E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatStealer.Infrastructure", "src\CatStealer.Infrastructure\CatStealer.Infrastructure.csproj", "{35F8131A-3E9B-45EA-B8C2-BE067FABED1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatStealer.Application", "src\CatStealer.Application\CatStealer.Application.csproj", "{2BC516C7-811E-4059-8924-A9B81B828DAD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatStealer.Application", "src\CatStealer.Application\CatStealer.Application.csproj", "{2BC516C7-811E-4059-8924-A9B81B828DAD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C7BB5F15-D5B3-41EA-B57B-F47EAB171C28}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{30E46E52-691D-4E0F-A510-C036286B22B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatStealer.UnitTests", "tests\CatStealer.UnitTests\CatStealer.UnitTests.csproj", "{FFB185F3-519E-4E28-BA1C-BAD2DFE5F793}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatStealer.IntegrationTests", "tests\CatStealer.IntegrationTests\CatStealer.IntegrationTests.csproj", "{B187FBAD-BC87-45C2-8EDB-0D35BE445579}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatStealer.Tests", "tests\CatStealer.Tests\CatStealer.Tests.csproj", "{EA5CC152-E2C5-4A5F-AD4F-E81EBC927CD2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,14 +39,10 @@ Global
 		{2BC516C7-811E-4059-8924-A9B81B828DAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BC516C7-811E-4059-8924-A9B81B828DAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BC516C7-811E-4059-8924-A9B81B828DAD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FFB185F3-519E-4E28-BA1C-BAD2DFE5F793}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FFB185F3-519E-4E28-BA1C-BAD2DFE5F793}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FFB185F3-519E-4E28-BA1C-BAD2DFE5F793}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FFB185F3-519E-4E28-BA1C-BAD2DFE5F793}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B187FBAD-BC87-45C2-8EDB-0D35BE445579}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B187FBAD-BC87-45C2-8EDB-0D35BE445579}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B187FBAD-BC87-45C2-8EDB-0D35BE445579}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B187FBAD-BC87-45C2-8EDB-0D35BE445579}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA5CC152-E2C5-4A5F-AD4F-E81EBC927CD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA5CC152-E2C5-4A5F-AD4F-E81EBC927CD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA5CC152-E2C5-4A5F-AD4F-E81EBC927CD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA5CC152-E2C5-4A5F-AD4F-E81EBC927CD2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,8 +52,7 @@ Global
 		{F94B8157-70DD-4BF7-844A-1A1F12FE00B7} = {C7BB5F15-D5B3-41EA-B57B-F47EAB171C28}
 		{35F8131A-3E9B-45EA-B8C2-BE067FABED1E} = {C7BB5F15-D5B3-41EA-B57B-F47EAB171C28}
 		{2BC516C7-811E-4059-8924-A9B81B828DAD} = {C7BB5F15-D5B3-41EA-B57B-F47EAB171C28}
-		{FFB185F3-519E-4E28-BA1C-BAD2DFE5F793} = {30E46E52-691D-4E0F-A510-C036286B22B9}
-		{B187FBAD-BC87-45C2-8EDB-0D35BE445579} = {30E46E52-691D-4E0F-A510-C036286B22B9}
+		{EA5CC152-E2C5-4A5F-AD4F-E81EBC927CD2} = {30E46E52-691D-4E0F-A510-C036286B22B9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {802D9C66-A229-4C34-9291-8BECD9CFBCE5}
