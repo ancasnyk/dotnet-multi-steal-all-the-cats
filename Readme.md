@@ -1,4 +1,4 @@
-# About TodoList
+# About CatsStealer
 
 This project's goal is to allow stealing cats data from the [Cats API](https://thecatapi.com/).
 
