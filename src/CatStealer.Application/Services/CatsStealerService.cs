@@ -12,7 +12,7 @@ namespace CatStealer.Application.Services
     {
         Task<int> FetchAndSaveCatsAsync();
         Task<CatDto> GetCatByIdAsync(int id);
-        Task<CatsResponse> GetCatsAsync(string tag, int page, int pageSize);
+        Task<CatsResponse> GetCatsAsync(string? tag, int page, int pageSize);
     }
 
     public class CatsStealerService : ICatsStealerService
@@ -93,7 +93,7 @@ namespace CatStealer.Application.Services
             return _mapper.Map<CatDto>(cat);
         }
 
-        public async Task<CatsResponse> GetCatsAsync(string tag, int page, int pageSize)
+        public async Task<CatsResponse> GetCatsAsync(string? tag, int page, int pageSize)
         {
             var catsResult = await _catRepository.GetCatsAsync(tag, page, pageSize);
 
