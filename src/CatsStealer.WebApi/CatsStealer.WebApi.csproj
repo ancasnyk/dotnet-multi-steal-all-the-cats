@@ -16,10 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\CatStealer.Application\CatStealer.Application.csproj" />
     <ProjectReference Include="..\CatStealer.Infrastructure\CatStealer.Infrastructure.csproj" />
   </ItemGroup>
 
