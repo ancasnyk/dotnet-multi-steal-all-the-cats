@@ -1,5 +1,8 @@
 ﻿namespace CatStealer.Core.Entities
 {
+    /// <summary>
+    /// The entity model for a cat.
+    /// </summary>
     public class CatEntity
     {
         public int Id { get; set; }

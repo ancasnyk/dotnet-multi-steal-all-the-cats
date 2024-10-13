@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CatStealer.Infrastructure.Repositories
 {
+    /// <inheritdoc />
     public class CatRepository : ICatRepository
     {
         private readonly ApplicationDbContext _context;
@@ -15,6 +16,7 @@ namespace CatStealer.Infrastructure.Repositories
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
+        /// <inheritdoc />
         public async Task<CatEntity> GetCatByIdAsync(int id)
         {
             return await _context.Cats
@@ -22,6 +24,7 @@ namespace CatStealer.Infrastructure.Repositories
                 .FirstOrDefaultAsync(c => c.Id == id);
         }
 
+        /// <inheritdoc />
         public async Task<CatsResult> GetCatsAsync(string tag, int page, int pageSize)
         {
             IQueryable<CatEntity> query = _context.Cats.Include(c => c.Tags);
@@ -47,6 +50,7 @@ namespace CatStealer.Infrastructure.Repositories
             };
         }
 
+        /// <inheritdoc />
         public async Task<TagEntity> GetOrCreateTagAsync(string tagName)
         {
             var tag = await _context.Tags.FirstOrDefaultAsync(t => t.Name == tagName.Trim());
@@ -59,11 +63,13 @@ namespace CatStealer.Infrastructure.Repositories
             return tag;
         }
 
+        /// <inheritdoc />
         public async Task SaveChangesAsync()
         {
             await _context.SaveChangesAsync();
         }
 
+        /// <inheritdoc />
         public async Task<HashSet<string>> GetExistingCatIdsAsync(IEnumerable<string> catIds)
         {
             return new HashSet<string>(
@@ -74,6 +80,7 @@ namespace CatStealer.Infrastructure.Repositories
             );
         }
 
+        /// <inheritdoc />
         public async Task AddCatsAsync(IEnumerable<CatEntity> cats)
         {
             await _context.Cats.AddRangeAsync(cats);

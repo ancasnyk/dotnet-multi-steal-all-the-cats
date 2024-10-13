@@ -2,6 +2,9 @@
 
 namespace CatStealer.Application.Models
 {
+    /// <summary>
+    /// The response model for the cats.
+    /// </summary>
     public class CatsResponse
     {
         public IEnumerable<CatDto> Cats { get; set; }

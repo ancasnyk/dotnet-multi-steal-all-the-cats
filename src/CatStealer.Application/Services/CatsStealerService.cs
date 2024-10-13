@@ -8,13 +8,35 @@ using CatStealer.Infrastructure.Services;
 
 namespace CatStealer.Application.Services
 {
+    /// <summary>
+    /// The service for fetching and saving cats.
+    /// </summary>
     public interface ICatsStealerService
     {
+        /// <summary>
+        /// Downloads and stores cat data.
+        /// </summary>
+        /// <returns>The number of unique cats downloaded.</returns>
         Task<int> FetchAndSaveCatsAsync();
+
+        /// <summary>
+        /// Get a cat by its ID.
+        /// </summary>
+        /// <param name="id">The ID.</param>
+        /// <returns>The Cat.</returns>
         Task<CatDto> GetCatByIdAsync(int id);
+
+        /// <summary>
+        /// Get cats with optional tag filtering and paging.
+        /// </summary>
+        /// <param name="tag">The tag.</param>
+        /// <param name="page">The page.</param>
+        /// <param name="pageSize">The page size.</param>
+        /// <returns>The cats.</returns>
         Task<CatsResponse> GetCatsAsync(string? tag, int page, int pageSize);
     }
 
+    /// <inheritdoc />
     public class CatsStealerService : ICatsStealerService
     {
         private readonly ICatRepository _catRepository;
@@ -30,6 +52,7 @@ namespace CatStealer.Application.Services
             _catApiClient = catApiClient;
         }
 
+        /// <inheritdoc />
         public async Task<int> FetchAndSaveCatsAsync()
         {
             var newCats = new List<CatEntity>();
@@ -86,6 +109,7 @@ namespace CatStealer.Application.Services
             return fetchedCats;
         }
 
+        /// <inheritdoc />
         public async Task<CatDto> GetCatByIdAsync(int id)
         {
             var cat = await _catRepository.GetCatByIdAsync(id);
@@ -93,6 +117,7 @@ namespace CatStealer.Application.Services
             return _mapper.Map<CatDto>(cat);
         }
 
+        /// <inheritdoc />
         public async Task<CatsResponse> GetCatsAsync(string? tag, int page, int pageSize)
         {
             var catsResult = await _catRepository.GetCatsAsync(tag, page, pageSize);

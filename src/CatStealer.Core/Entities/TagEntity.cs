@@ -1,6 +1,9 @@
 ﻿
 namespace CatStealer.Core.Entities
 {
+    /// <summary>
+    /// The entity model for a tag.
+    /// </summary>
     public class TagEntity
     {
         public int Id { get; set; }

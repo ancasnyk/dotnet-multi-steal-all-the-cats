@@ -6,12 +6,26 @@ using System.Text.Json.Serialization;
 
 namespace CatStealer.Infrastructure.Services
 {
+    /// <summary>
+    /// Api client for fetching cat data from thecatapi.com
+    /// </summary>
     public interface ICatApiClient
     {
+        /// <summary>
+        /// Fetches cat data from the API
+        /// </summary>
+        /// <returns>The list of the cats.</returns>
         Task<List<CatApiResponse>> FetchCatsAsync();
+        
+        /// <summary>
+        /// Fetch an image into bytes.
+        /// </summary>
+        /// <param name="url">The image URL</param>
+        /// <returns>The image as a byte array.</returns>
         Task<byte[]> FetchImageAsync(string url);
     }
 
+    /// <inheritdoc />
     public class CatApiClient : ICatApiClient
     {
         private readonly HttpClient _httpClient;
@@ -33,6 +47,7 @@ namespace CatStealer.Infrastructure.Services
             _httpClient.DefaultRequestHeaders.Add("x-api-key", _settings.ApiKey);
         }
 
+        /// <inheritdoc />
         public async Task<List<CatApiResponse>> FetchCatsAsync()
         {
             var cats = new List<CatApiResponse>();
@@ -52,6 +67,7 @@ namespace CatStealer.Infrastructure.Services
             return cats;
         }
 
+        /// <inheritdoc />
         public async Task<byte[]> FetchImageAsync(string url)
         {
             var response = await _httpClient.GetAsync(url);

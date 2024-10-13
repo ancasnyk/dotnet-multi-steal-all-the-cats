@@ -1,5 +1,4 @@
-﻿using System.Runtime.InteropServices.JavaScript;
-using CatStealer.Core.Entities;
+﻿using CatStealer.Core.Entities;
 using CatStealer.Core.Interfaces.Repositories;
 using CatStealer.Core.Results;
 using CatStealer.Infrastructure.Services;
