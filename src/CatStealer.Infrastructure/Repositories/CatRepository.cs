@@ -26,7 +26,7 @@ namespace CatStealer.Infrastructure.Repositories
         {
             IQueryable<CatEntity> query = _context.Cats.Include(c => c.Tags);
 
-            if (!string.IsNullOrEmpty(tag))
+            if (string.IsNullOrEmpty(tag) == false)
             {
                 query = query.Where(c => c.Tags.Any(t => t.Name == tag));
             }
