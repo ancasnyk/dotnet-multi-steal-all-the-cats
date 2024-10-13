@@ -28,7 +28,10 @@ namespace CatsStealer.WebApi
                 options.UseSqlServer(builder.Configuration["ConnectionString"], b => b.MigrationsAssembly("CatStealer.Infrastructure"));
             });
 
+            builder.Services.AddAutoMapper(typeof(MappingProfile));
             builder.Services.AddScoped<ICatRepository, CatRepository>();
+            builder.Services.AddScoped<ICatsStealerService, CatsStealerService>();
+
             // Add services to the container.
             builder.Services.AddControllers()
                 .AddJsonOptions(options =>

@@ -47,18 +47,6 @@ namespace CatStealer.Infrastructure.Repositories
             };
         }
 
-        public async Task<int> AddCatAsync(CatEntity cat)
-        {
-            _context.Cats.Add(cat);
-            await _context.SaveChangesAsync();
-            return cat.Id;
-        }
-
-        public async Task<bool> CatExistsAsync(string catId)
-        {
-            return await _context.Cats.AnyAsync(c => c.CatId == catId);
-        }
-
         public async Task<TagEntity> GetOrCreateTagAsync(string tagName)
         {
             var tag = await _context.Tags.FirstOrDefaultAsync(t => t.Name == tagName.Trim());
@@ -73,6 +61,22 @@ namespace CatStealer.Infrastructure.Repositories
 
         public async Task SaveChangesAsync()
         {
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<HashSet<string>> GetExistingCatIdsAsync(IEnumerable<string> catIds)
+        {
+            return new HashSet<string>(
+                await _context.Cats
+                    .Where(c => catIds.Contains(c.CatId))
+                    .Select(c => c.CatId)
+                    .ToListAsync()
+            );
+        }
+
+        public async Task AddCatsAsync(IEnumerable<CatEntity> cats)
+        {
+            await _context.Cats.AddRangeAsync(cats);
             await _context.SaveChangesAsync();
         }
     }

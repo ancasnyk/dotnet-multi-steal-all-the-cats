@@ -6,4 +6,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CatStealer.Core\CatStealer.Core.csproj" />
+    <ProjectReference Include="..\CatStealer.Infrastructure\CatStealer.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
