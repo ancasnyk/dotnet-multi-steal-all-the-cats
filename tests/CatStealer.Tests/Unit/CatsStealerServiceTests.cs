@@ -26,7 +26,6 @@ namespace CatStealer.Tests.Unit
         [Fact]
         public async Task FetchAndSaveCatsAsync_ShouldReturnNumberOfFetchedCats()
         {
-            // Arrange
             var apiResponses = new List<CatApiResponse>
             {
                 new() { Id = "test1", Width = 100, Height = 100, Url = "https://example.com/cat1.jpg" },
@@ -38,10 +37,8 @@ namespace CatStealer.Tests.Unit
 
             var service = new CatsStealerService(_mockRepository.Object, _mockMapper.Object, _mockApiClient.Object);
 
-            // Act
             var result = await service.FetchAndSaveCatsAsync();
 
-            // Assert
             Assert.Equal(2, result);
             _mockRepository.Verify(x => x.AddCatsAsync(It.Is<IEnumerable<CatEntity>>(cats => cats.Count() == 2)), Times.Once);
         }
@@ -49,7 +46,6 @@ namespace CatStealer.Tests.Unit
         [Fact]
         public async Task GetCatByIdAsync_ShouldReturnMappedCatDto()
         {
-            // Arrange
             var catEntity = new CatEntity { Id = 1, CatId = "test1", Width = 100, Height = 100 };
             var catDto = new CatDto { Id = 1, CatId = "test1", Width = 100, Height = 100 };
             _mockRepository.Setup(x => x.GetCatByIdAsync(1)).ReturnsAsync(catEntity);
@@ -57,17 +53,14 @@ namespace CatStealer.Tests.Unit
 
             var service = new CatsStealerService(_mockRepository.Object, _mockMapper.Object, _mockApiClient.Object);
 
-            // Act
             var result = await service.GetCatByIdAsync(1);
 
-            // Assert
             Assert.Equal(catDto, result);
         }
 
         [Fact]
         public async Task GetCatsAsync_ShouldReturnMappedCatsResponse()
         {
-            // Arrange
             var catsResult = new CatsResult
             {
                 Cats = new List<CatEntity> { new() { Id = 1, CatId = "test1" } },
@@ -85,10 +78,8 @@ namespace CatStealer.Tests.Unit
 
             var service = new CatsStealerService(_mockRepository.Object, _mockMapper.Object, _mockApiClient.Object);
 
-            // Act
             var result = await service.GetCatsAsync(null, 1, 10);
 
-            // Assert
             Assert.NotNull(result);
             Assert.Equal(mappedCatsResponse.TotalCount, result.TotalCount);
             Assert.Equal(mappedCatsResponse.TotalPages, result.TotalPages);

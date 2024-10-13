@@ -30,7 +30,6 @@ namespace CatStealer.Tests.Unit
         [Fact]
         public async Task FetchCatsAsync_ShouldReturnCats_WhenApiCallIsSuccessful()
         {
-            // Arrange
             var mockHttpMessageHandler = new Mock<HttpMessageHandler>();
             mockHttpMessageHandler.Protected()
                 .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())
@@ -45,10 +44,8 @@ namespace CatStealer.Tests.Unit
 
             var catApiClient = new CatApiClient(_mockHttpClientFactory.Object, _mockLogger.Object, _mockSettings.Object, _mockJsonOptions.Object);
 
-            // Act
             var result = await catApiClient.FetchCatsAsync();
 
-            // Assert
             Assert.Single(result);
             Assert.Equal("test1", result[0].Id);
         }
@@ -56,7 +53,6 @@ namespace CatStealer.Tests.Unit
         [Fact]
         public async Task FetchImageAsync_ShouldReturnImageBytes_WhenApiCallIsSuccessful()
         {
-            // Arrange
             var mockHttpMessageHandler = new Mock<HttpMessageHandler>();
             mockHttpMessageHandler.Protected()
                 .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())
@@ -71,10 +67,8 @@ namespace CatStealer.Tests.Unit
 
             var catApiClient = new CatApiClient(_mockHttpClientFactory.Object, _mockLogger.Object, _mockSettings.Object, _mockJsonOptions.Object);
 
-            // Act
             var result = await catApiClient.FetchImageAsync("https://example.com/cat.jpg");
 
-            // Assert
             Assert.Equal(5, result.Length);
         }
     }

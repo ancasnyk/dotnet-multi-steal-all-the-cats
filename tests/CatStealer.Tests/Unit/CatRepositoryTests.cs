@@ -42,7 +42,6 @@ namespace CatStealer.Tests.Unit
         [Fact]
         public async Task GetCatsAsync_ShouldReturnPaginatedResult()
         {
-            // Arrange
             await using (var context = new ApplicationDbContext(_options))
             {
                 for (var i = 0; i < 20; i++)
@@ -52,13 +51,11 @@ namespace CatStealer.Tests.Unit
                 await context.SaveChangesAsync();
             }
 
-            // Act
             await using (var context = new ApplicationDbContext(_options))
             {
                 var repository = new CatRepository(context);
                 var result = await repository.GetCatsAsync(null, 1, 10);
 
-                // Assert
                 Assert.Equal(10, result.Cats.Count());
                 Assert.Equal(20, result.TotalCount);
             }
@@ -67,14 +64,11 @@ namespace CatStealer.Tests.Unit
         [Fact]
         public async Task GetOrCreateTagAsync_ShouldCreateNewTag_WhenTagDoesNotExist()
         {
-            // Arrange
             await using var context = new ApplicationDbContext(_options);
             var repository = new CatRepository(context);
 
-            // Act
             var result = await repository.GetOrCreateTagAsync("NewTag");
 
-            // Assert
             Assert.NotNull(result);
             Assert.Equal("NewTag", result.Name);
             Assert.True(context.Tags.Any(t => t.Name == "NewTag"));
@@ -83,7 +77,6 @@ namespace CatStealer.Tests.Unit
         [Fact]
         public async Task GetExistingCatIdsAsync_ShouldReturnExistingIds()
         {
-            // Arrange
             await using (var context = new ApplicationDbContext(_options))
             {
                 context.Cats.AddRange(
@@ -94,13 +87,11 @@ namespace CatStealer.Tests.Unit
                 await context.SaveChangesAsync();
             }
 
-            // Act
             await using (var context = new ApplicationDbContext(_options))
             {
                 var repository = new CatRepository(context);
                 var result = await repository.GetExistingCatIdsAsync(new[] { "exist1", "exist2", "nonexist" });
 
-                // Assert
                 Assert.Equal(2, result.Count);
                 Assert.Contains("exist1", result);
                 Assert.Contains("exist2", result);
@@ -111,21 +102,18 @@ namespace CatStealer.Tests.Unit
         [Fact]
         public async Task AddCatsAsync_ShouldAddMultipleCats()
         {
-            // Arrange
             var catsToAdd = new List<CatEntity>
             {
                 new() { CatId = "new1", Width = 100, Height = 100, Image = new byte[]{} },
                 new() { CatId = "new2", Width = 200, Height = 200, Image = new byte[]{} }
             };
 
-            // Act
             await using (var context = new ApplicationDbContext(_options))
             {
                 var repository = new CatRepository(context);
                 await repository.AddCatsAsync(catsToAdd);
             }
 
-            // Assert
             await using (var context = new ApplicationDbContext(_options))
             {
                 Assert.Equal(2, await context.Cats.CountAsync());

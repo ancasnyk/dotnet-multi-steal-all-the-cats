@@ -55,13 +55,10 @@ namespace CatStealer.Tests.Integration
         [Fact]
         public async Task FetchAndSaveCatsAsync_ShouldSaveCatsToDatabase()
         {
-            // Arrange
             var service = _serviceProvider.GetRequiredService<ICatsStealerService>();
 
-            // Act
             var result = await service.FetchAndSaveCatsAsync();
 
-            // Assert
             Assert.Equal(2, result);
             Assert.Equal(2, await _dbContext.Cats.CountAsync());
         }
@@ -69,14 +66,11 @@ namespace CatStealer.Tests.Integration
         [Fact]
         public async Task GetCatByIdAsync_ShouldReturnSavedCat()
         {
-            // Arrange
             var service = _serviceProvider.GetRequiredService<ICatsStealerService>();
             await service.FetchAndSaveCatsAsync(); // Ensure cats are in the database
 
-            // Act
             var cat = await service.GetCatByIdAsync(1);
 
-            // Assert
             Assert.NotNull(cat);
             Assert.Equal("test1", cat.CatId);
         }
@@ -84,14 +78,11 @@ namespace CatStealer.Tests.Integration
         [Fact]
         public async Task GetCatsAsync_ShouldReturnPaginatedResults()
         {
-            // Arrange
             var service = _serviceProvider.GetRequiredService<ICatsStealerService>();
             await service.FetchAndSaveCatsAsync(); // Ensure cats are in the database
 
-            // Act
             var result = await service.GetCatsAsync(null, 1, 1);
 
-            // Assert
             Assert.Single(result.Cats);
             Assert.Equal(2, result.TotalCount);
             Assert.Equal(2, result.TotalPages);
@@ -100,7 +91,6 @@ namespace CatStealer.Tests.Integration
         [Fact]
         public async Task GetCatsAsync_ShouldFilterByTag_WhenTagIsProvided()
         {
-            // Arrange
             var service = _serviceProvider.GetRequiredService<ICatsStealerService>();
             var mapper = _serviceProvider.GetRequiredService<IMapper>();
 
@@ -119,10 +109,8 @@ namespace CatStealer.Tests.Integration
             _dbContext.Cats.Add(cat);
             await _dbContext.SaveChangesAsync();
 
-            // Act
             var result = await service.GetCatsAsync("Playful", 1, 10);
 
-            // Assert
             Assert.NotNull(result);
             Assert.Single(result.Cats);
             Assert.Equal(1, result.TotalCount);
@@ -135,7 +123,6 @@ namespace CatStealer.Tests.Integration
         [Fact]
         public async Task FetchAndSaveCatsAsync_ShouldNotSaveDuplicateCats()
         {
-            // Arrange
             var service = _serviceProvider.GetRequiredService<ICatsStealerService>();
 
             // First, add a cat to the database
@@ -149,10 +136,8 @@ namespace CatStealer.Tests.Integration
             });
             await _dbContext.SaveChangesAsync();
 
-            // Act
             var result = await service.FetchAndSaveCatsAsync();
 
-            // Assert
             Assert.Equal(1, result); // Only one new cat should be saved
             Assert.Equal(2, await _dbContext.Cats.CountAsync()); // Total count should be 2
 
