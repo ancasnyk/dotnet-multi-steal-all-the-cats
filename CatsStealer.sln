@@ -8,6 +8,7 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatStealer.Core", "src\CatStealer.Core\CatStealer.Core.csproj", "{F94B8157-70DD-4BF7-844A-1A1F12FE00B7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatStealer.Infrastructure", "src\CatStealer.Infrastructure\CatStealer.Infrastructure.csproj", "{35F8131A-3E9B-45EA-B8C2-BE067FABED1E}"
+test
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatStealer.Application", "src\CatStealer.Application\CatStealer.Application.csproj", "{2BC516C7-811E-4059-8924-A9B81B828DAD}"
 EndProject
