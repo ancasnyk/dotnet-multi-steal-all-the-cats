@@ -13,6 +13,8 @@ This project's goal is to allow stealing cats data from the [Cats API](https://t
 
 ## Set up
 
+stuff
+
 ### VS/Terminal
 
 1. Clone this project running `git clone https://github.com/amoraitis/steal-all-the-cats.git` in your terminal. If you haven't git installed can simply download it and unzip it.
