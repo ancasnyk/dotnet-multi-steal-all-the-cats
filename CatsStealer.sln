@@ -19,7 +19,7 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatStealer.Tests", "tests\CatStealer.Tests\CatStealer.Tests.csproj", "{EA5CC152-E2C5-4A5F-AD4F-E81EBC927CD2}"
 EndProject
 
-INSTABOT_API_KEY=Dm5rgd+XOQUkd/8kv4E61DiY/p/n2ksiOkhKLs4oKeyQ
+
 
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
