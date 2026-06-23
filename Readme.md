@@ -38,7 +38,7 @@ setx CatsStealer_CatsApiSettings:ApiKey "YourApiKey" /M
 ```
 
 3. Go to the `src/CatsStealer.WebApi` folder by running the command `cd src/CatsStealer.WebApi` or manually navigating into the file system.
-
+EDAMAM_API_KEY=6cev9rtf7gixm8dcej3gv9ryowra20hl
 4. Run the command `dotnet restore` to install all the dependencies.
 
 5. Run the command `dotnet build` to compile the project.
